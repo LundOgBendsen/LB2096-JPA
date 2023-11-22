@@ -1,3 +1,2 @@
-CDI1.0-Ex-HelloWorld
-Demonstrates the use of CDI in web app.
+JPA-Ex04-SameDAOinEJBandJavaSE.
 Built using maven and latest IntelliJ version.

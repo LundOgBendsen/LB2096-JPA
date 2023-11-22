@@ -1,4 +1,4 @@
-package test.client.standalone;
+package lundogbendsen.client;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -6,8 +6,8 @@ import jakarta.persistence.Persistence;
 
 import org.apache.log4j.Level;
 
-import test.dao.PersonRepositoryImpl;
-import test.model.Person;
+import lundogbendsen.dao.PersonRepositoryImpl;
+import lundogbendsen.model.Person;
 import dk.lundogbendsen.jpa.util.EntityPager;
 import dk.lundogbendsen.jpa.util.JPAResourceHandler;
 import dk.lundogbendsen.jpa.util.JpaUtil;

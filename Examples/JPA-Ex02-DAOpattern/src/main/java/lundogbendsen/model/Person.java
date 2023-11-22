@@ -1,4 +1,4 @@
-package test.model;
+package lundogbendsen.model;
 
 import java.io.Serializable;
 

@@ -1,11 +1,11 @@
-package test.dao;
+package lundogbendsen.dao;
 
 import java.util.List;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 
-import test.model.Person;
+import lundogbendsen.model.Person;
 import dk.lundogbendsen.jpa.util.EntityPager;
 
 public class PersonRepositoryImpl implements PersonRepository {

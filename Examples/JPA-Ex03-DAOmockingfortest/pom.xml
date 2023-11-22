@@ -16,6 +16,6 @@
     <name>JPA-Ex03-DAOmockingfortest</name>
     <dependencies>
     </dependencies>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
 </project>

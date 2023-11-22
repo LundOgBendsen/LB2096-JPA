@@ -25,19 +25,11 @@ public class StandaloneJpaClient {
 		
 		// ///////////////////////////////////////////////////////////////////////
 		// Create new JPA entity manager (similar to JDBC Connection)
-		EntityManagerFactory entityManagerFactory = null;
-		EntityManager entityManager = null;
-		try{
-			entityManagerFactory = Persistence.createEntityManagerFactory("StandaloneJpaTestPersistenceUnit");
-			entityManager = entityManagerFactory.createEntityManager();
+		// JPA supports AutoCloseable, so we use try-with-resources
+		try(EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("StandaloneJpaTestPersistenceUnit");
+			EntityManager entityManager = entityManagerFactory.createEntityManager()) {
 			exerciseWithJPA(loggingConfig, entityManagerFactory, entityManager);
-		}finally{
-			// ///////////////////////////////////////////////////////////////////////
-			// Free resources used by the JPA entity manager and entity manager factory
-			JPAResourceHandler.close(entityManager);
-			// Necessary with JPA 2.1 / Hibernate 5.2.2
-			JPAResourceHandler.close(entityManagerFactory);
-		}		
+		}
 	}
 	
 	public static void exerciseWithJPA(JpaUtil.HibernateLoggingConfig loggingConfig, 

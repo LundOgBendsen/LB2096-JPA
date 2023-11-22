@@ -1,4 +1,4 @@
-package dk.lungogbendsen.model;
+package dk.lundogbendsen.model;
 
 import java.io.Serializable;
 

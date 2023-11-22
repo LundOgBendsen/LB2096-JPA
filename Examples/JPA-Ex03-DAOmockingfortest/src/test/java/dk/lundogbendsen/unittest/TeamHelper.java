@@ -1,10 +1,10 @@
-package dk.lungogbendsen.unittest;
+package dk.lundogbendsen.unittest;
 
 import java.util.LinkedList;
 import java.util.List;
 
-import dk.lungogbendsen.dao.PersonRepository;
-import dk.lungogbendsen.model.Person;
+import dk.lundogbendsen.dao.PersonRepository;
+import dk.lundogbendsen.model.Person;
 
 // This Class makes use of our DAO class
 public class TeamHelper {

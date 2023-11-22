@@ -1,4 +1,4 @@
-package dk.lungogbendsen.unittest;
+package dk.lundogbendsen.unittest;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,8 +6,8 @@ import java.util.Map;
 
 import jakarta.persistence.EntityManager;
 
-import dk.lungogbendsen.dao.PersonRepository;
-import dk.lungogbendsen.model.Person;
+import dk.lundogbendsen.dao.PersonRepository;
+import dk.lundogbendsen.model.Person;
 import dk.lundogbendsen.jpa.util.EntityPager;
 
 public class PersonRepositoryTestMock implements PersonRepository {

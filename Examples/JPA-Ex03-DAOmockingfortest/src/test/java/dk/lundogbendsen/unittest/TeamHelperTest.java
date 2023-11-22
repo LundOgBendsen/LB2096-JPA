@@ -1,4 +1,4 @@
-package dk.lungogbendsen.unittest;
+package dk.lundogbendsen.unittest;
 
 import static org.junit.Assert.*;
 
@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import dk.lundogbendsen.string.util.StringUtil;
 
-import dk.lungogbendsen.model.Person;
+import dk.lundogbendsen.model.Person;
 
 public class TeamHelperTest {
 

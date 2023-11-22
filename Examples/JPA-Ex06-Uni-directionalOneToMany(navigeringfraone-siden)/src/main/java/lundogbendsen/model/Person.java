@@ -1,4 +1,4 @@
-package lungogbendsen.model;
+package lundogbendsen.model;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -9,7 +9,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
-import lungogbendsen.model.Car;
+
 
 @SuppressWarnings("serial")
 @Entity
@@ -21,7 +21,7 @@ public class Person implements Serializable {
 
 	private String name;
 
-	@OneToMany(mappedBy = "owner")
+	@OneToMany
 	private Collection<Car> ownedCars = new LinkedList<Car>();
 
 	public Person() {
@@ -31,21 +31,16 @@ public class Person implements Serializable {
 		this.name = name;
 	}
 
-	public void addOwnedCar(Car car) {
-		Person previousOwner = car.getOwner();
-		if (previousOwner != null) {
-			boolean aCarWasRemoved = previousOwner.ownedCars.remove(car);
-			assert aCarWasRemoved;
+	// Note: This method does not secure referential intregrity as the
+	// added car will still be contained with in the previous owners collection of owned cars
+	public void addOwnedCar(Car newCar) {
+		if(! this.ownedCars.contains(newCar)){
+			this.ownedCars.add(newCar);
 		}
-		car.setOwner(this);
-		this.ownedCars.add(car);
 	}
 
-	public boolean removeOwnedCar(Car car) {
-		if (car.getOwner() == this) {
-			car.setOwner(null);
-		}
-		boolean aCarWasRemoved = this.ownedCars.remove(car);
+	public boolean removeOwnedCar(Car carToRemove) {
+		boolean aCarWasRemoved = this.ownedCars.remove(carToRemove);
 		return aCarWasRemoved;
 	}
 

@@ -1,15 +1,14 @@
-package lungogbendsen.client;
+package lundogbendsen.client;
 
+import dk.lundogbendsen.jpa.util.JpaUtil;
+import dk.lundogbendsen.string.util.StringUtil;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
+import jakarta.persistence.RollbackException;
+import lundogbendsen.model.Car;
+import lundogbendsen.model.Person;
 import org.apache.log4j.Level;
-
-import lungogbendsen.model.Car;
-import lungogbendsen.model.Person;
-import dk.lundogbendsen.jpa.util.JPAResourceHandler;
-import dk.lundogbendsen.jpa.util.JpaUtil;
-import dk.lundogbendsen.string.util.StringUtil;
 
 public class StandaloneJpaClient {
 
@@ -82,10 +81,29 @@ public class StandaloneJpaClient {
 		entityManager.getTransaction().commit();
 
 		// /////////////////////////////////////////////////////////////
-		StringUtil.prettyPrintHeadline("Let Lise own all cars");
+		StringUtil.prettyPrintHeadline("Move car from Thomas to Lise - but without securing referential integrity");
 		entityManager.getTransaction().begin();
-		lise.addOwnedCar(skoda);
 		lise.addOwnedCar(opel);
+
+
+		jpaql = "select p from Person p";
+		JpaUtil.prettyPrintQueryResult(jpaql, entityManager.createQuery(jpaql).getResultList());
+		jpaql = "select c from Car c";
+		JpaUtil.prettyPrintQueryResult(jpaql, entityManager.createQuery(jpaql).getResultList());
+
+		try{
+			entityManager.getTransaction().commit();
+		}catch(RollbackException e){
+			assert true;
+			System.out.println("Caught an exception");
+		}
+		// /////////////////////////////////////////////////////////////
+		StringUtil.prettyPrintHeadline("Move car from Thomas to Lise - this time assuring referential integrity");
+		entityManager.getTransaction().begin();
+		// It is left for the developer to remember both add and remove operations.
+		lise.addOwnedCar(opel);
+		thomas.removeOwnedCar(opel);
+
 
 		jpaql = "select p from Person p";
 		JpaUtil.prettyPrintQueryResult(jpaql, entityManager.createQuery(jpaql).getResultList());

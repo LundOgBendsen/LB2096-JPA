@@ -1,14 +1,13 @@
-package test.client.standalone;
+package dk.lundogbendsen.client;
 
+import dk.lundogbendsen.dao.PersonRepositoryImpl;
+import dk.lundogbendsen.model.Person;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 
 import org.apache.log4j.Level;
 
-import test.dao.PersonRepositoryImpl;
-import test.model.Person;
-import dk.lundogbendsen.jpa.util.JPAResourceHandler;
 import dk.lundogbendsen.jpa.util.JpaUtil;
 
 public class StandaloneJpaClient {
@@ -24,19 +23,12 @@ public class StandaloneJpaClient {
 		
 		// ///////////////////////////////////////////////////////////////////////
 		// Create new JPA entity manager (similar to JDBC Connection)
-		EntityManagerFactory entityManagerFactory = null;
-		EntityManager entityManager = null;
-		try{
-			entityManagerFactory = Persistence.createEntityManagerFactory("StandaloneJpaTestPersistenceUnit");
-			entityManager = entityManagerFactory.createEntityManager();
+		// JPA supports AutoCloseable, so we use try-with-resources
+		try(EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("StandaloneJpaTestPersistenceUnit");
+			EntityManager entityManager = entityManagerFactory.createEntityManager()) {
 			exerciseWithJPA(loggingConfig, entityManagerFactory, entityManager);
-		}finally{
-			// ///////////////////////////////////////////////////////////////////////
-			// Free resources used by the JPA entity manager and entity manager factory
-			JPAResourceHandler.close(entityManager);
-			// Necessary with JPA 2.1 / Hibernate 5.2.2
-			JPAResourceHandler.close(entityManagerFactory);
-		}		
+		}
+
 	}
 	
 	public static void exerciseWithJPA(JpaUtil.HibernateLoggingConfig loggingConfig, 

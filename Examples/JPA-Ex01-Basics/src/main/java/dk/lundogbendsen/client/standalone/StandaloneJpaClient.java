@@ -1,4 +1,4 @@
-package test.client.standalone;
+package dk.lundogbendsen.client.standalone;
 
 import java.util.List;
 
@@ -9,12 +9,13 @@ import jakarta.persistence.TypedQuery;
 
 import org.apache.log4j.Level;
 
-import test.model.Person;
-import dk.lundogbendsen.jpa.util.JPAResourceHandler;
+import dk.lundogbendsen.model.Person;
 import dk.lundogbendsen.jpa.util.JpaUtil;
 import dk.lundogbendsen.string.util.StringUtil;
 
 public class StandaloneJpaClient {
+
+	public static final String PERSISTENCE_UNIT = "StandaloneJpaTestPersistenceUnit";
 
 	public static void main(String[] args) {
 		
@@ -27,21 +28,13 @@ public class StandaloneJpaClient {
 		
 		// ///////////////////////////////////////////////////////////////////////
 		// Create new JPA entity manager (similar to JDBC Connection)
-		EntityManagerFactory entityManagerFactory = null;
-		EntityManager entityManager = null;
-		try{
-			entityManagerFactory = Persistence.createEntityManagerFactory("StandaloneJpaTestPersistenceUnit");
-			entityManager = entityManagerFactory.createEntityManager();
+		// JPA supports AutoCloseable so we use try-with-resources
+		try (EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory(PERSISTENCE_UNIT);
+			 EntityManager entityManager = entityManagerFactory.createEntityManager()) {
 			exerciseWithJPA(loggingConfig, entityManagerFactory, entityManager);
-		}finally{
-			// ///////////////////////////////////////////////////////////////////////
-			// Free resources used by the JPA entity manager and entity manager factory
-			JPAResourceHandler.close(entityManager);
-			// Necessary with JPA 2.1 / Hibernate 5.2.2
-			JPAResourceHandler.close(entityManagerFactory);
-		}		
+		}
 	}
-	
+
 	public static void exerciseWithJPA(JpaUtil.HibernateLoggingConfig loggingConfig, 
 			EntityManagerFactory entityManagerFactory, EntityManager entityManager){
 		
@@ -229,8 +222,8 @@ public class StandaloneJpaClient {
 
 		// ///////////////////////////////////////////////////////////////////////
 		StringUtil.prettyPrintHeadline("You might want to take a look at the database.");
-		System.out.println("1) Connect to JpaTest database by starting the Squill Sql Tool.");
-		System.out.println("2) Make a connention based on the connect info in the persistence.xml");
+		System.out.println("1) Connect to JpaTest database by starting the SquirrelSql Tool.");
+		System.out.println("2) If no connection, make a connention based on the connect info in the persistence.xml");
 		System.out.println("3) Expand the tree under JPATESTUSERNAME");
 		System.out.println("4) Navigate to the Person table and select the contents pane.");
 		

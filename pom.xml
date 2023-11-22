@@ -17,13 +17,14 @@
     </properties>
 
     <dependencies>
+<!--
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-web-api</artifactId>
             <version>10.0.0</version>
             <scope>provided</scope>
         </dependency>
-<!--        <dependency>
+        <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-api</artifactId>
             <version>${junit.version}</version>
@@ -40,6 +41,24 @@
             <artifactId>junit</artifactId>
             <version>4.13.2</version>
         </dependency>-->
+        <dependency>
+            <groupId>jakarta.persistence</groupId>
+            <artifactId>jakarta.persistence-api</artifactId>
+            <version>3.1.0</version>
+        </dependency>
+        <!--dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>5.3.7.Final</version>
+        </dependency-->
+        <!-- https://mvnrepository.com/artifact/org.hibernate.orm/hibernate-core -->
+        <dependency>
+            <groupId>org.hibernate.orm</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>6.3.1.Final</version>
+        </dependency>
+
+
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter-engine</artifactId>
@@ -62,65 +81,15 @@
             <artifactId>derbytools</artifactId>
             <version>10.16.1.1</version>
         </dependency>
-        <dependency>
+        <!--dependency>
             <groupId>ch.qos.reload4j</groupId>
             <artifactId>reload4j</artifactId>
             <version>1.2.19</version>
-        </dependency>
+        </dependency> -->
         <dependency>
             <groupId>lundogbendsen</groupId>
             <artifactId>JPA-Utils</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
-
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.2</version>
-            </plugin>
-        </plugins>
-    </build>
-
-
-    <profiles>
-        <profile>
-            <id>mvn-deploy</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
-            <build>
-                <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-resources-plugin</artifactId>
-                        <version>3.3.1</version>
-                        <executions>
-                            <execution>
-                                <id>copy-war-to-deploy-folder</id>
-                                <phase>install</phase>
-                                <goals>
-                                    <goal>copy-resources</goal>
-                                </goals>
-                                <configuration>
-                                    <outputDirectory>${env.WILDFLY_HOME}/standalone/deployments</outputDirectory>
-                                    <resources>
-                                        <resource>
-                                            <directory>${basedir}/target/</directory>
-                                            <includes>
-                                                <include>${artifactId}-${version}.war</include>
-                                            </includes>
-                                        </resource>
-                                    </resources>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
-                </plugins>
-            </build>
-
-        </profile>
-    </profiles>
 </project>

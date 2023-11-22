@@ -1,10 +1,10 @@
-package test.model;
-
-import java.io.Serializable;
+package dk.lundogbendsen.model;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
+
+import java.io.Serializable;
 
 @SuppressWarnings("serial")
 @Entity

@@ -13,6 +13,6 @@
     <artifactId>JPA-Ex01-Basics</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>JPA-Ex01-Basics</name>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
 
 </project>

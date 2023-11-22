@@ -1,4 +1,4 @@
-package dk.lundogbendsen.client.standalone;
+package dk.lundogbendsen.client;
 
 import java.util.List;
 

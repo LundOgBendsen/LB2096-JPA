@@ -1,11 +1,6 @@
 package lundogbendsen.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 import lundogbendsen.model.Person;
 
 @Entity
@@ -18,7 +13,7 @@ public abstract class Pet {
 
 	private String name;
 
-	@OneToOne
+	@ManyToOne
 	private Person owner;
 	
 	public Pet() {

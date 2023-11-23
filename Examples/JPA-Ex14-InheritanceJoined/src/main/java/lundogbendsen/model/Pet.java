@@ -1,23 +1,18 @@
 package lundogbendsen.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 public abstract class Pet {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue()
 	private Integer id;
 
 	private String name;
 
-	@OneToOne
+	@ManyToOne()
 	private Person owner;
 	
 	public Pet() {

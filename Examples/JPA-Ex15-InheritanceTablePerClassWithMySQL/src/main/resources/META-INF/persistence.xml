@@ -15,6 +15,7 @@
 			<property name="jakarta.persistence.schema-generation.create-database-schemas" value="true"/>
 
 			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
+			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
 </persistence>

@@ -1,14 +1,13 @@
 package dk.lundogbendsen.client;
 
 import dk.lundogbendsen.dao.PersonRepositoryImpl;
+import dk.lundogbendsen.jpa.util.JpaUtil;
 import dk.lundogbendsen.model.Person;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
-
 import org.apache.log4j.Level;
 
-import dk.lundogbendsen.jpa.util.JpaUtil;
 
 public class StandaloneJpaClient {
 

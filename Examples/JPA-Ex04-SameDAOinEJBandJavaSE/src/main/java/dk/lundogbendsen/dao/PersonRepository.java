@@ -1,10 +1,12 @@
 package dk.lundogbendsen.dao;
 
-import dk.lundogbendsen.jpa.util.EntityPager;
 import dk.lundogbendsen.model.Person;
+import jakarta.ejb.Remote;
+
 
 import java.util.List;
 
+@Remote
 public interface PersonRepository {
 
 	public void persist(Person person);
@@ -16,8 +18,6 @@ public interface PersonRepository {
 	public long countPersons();
 
 	public List<Person> findAllPersons(int fromIndex, int count);
-
-	public EntityPager<Person> findAllPersonsAsPager(int pageSize);
 
 	public void removePerson(Person person);
 }

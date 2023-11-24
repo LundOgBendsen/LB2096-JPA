@@ -10,7 +10,23 @@
             <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
             <!-- Properties for Hibernate -->
             <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
+
         </properties>
     </persistence-unit>
+
+    <!--comment the following out before deploying to server -->
+
+    <persistence-unit name="StandaloneJpaTestPersistenceUnit" transaction-type="RESOURCE_LOCAL">
+        <properties>
+            <property name="jakarta.persistence.jdbc.driver" value="org.apache.derby.jdbc.ClientDriver" />
+            <property name="jakarta.persistence.jdbc.url" value="jdbc:derby://localhost:1527/JpaTest;create=true" />
+            <property name="jakarta.persistence.jdbc.user" value="JpaTestUserName" />
+            <property name="jakarta.persistence.jdbc.password" value="JpaTestPassword" />
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+
+            <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
+            <property name="hibernate.show_sql" value="true" />
+        </properties>
+    </persistence-unit>
+
 </persistence>

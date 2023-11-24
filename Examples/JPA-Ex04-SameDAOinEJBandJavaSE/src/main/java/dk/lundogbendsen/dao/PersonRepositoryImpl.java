@@ -20,7 +20,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 	// Denne metode bør ikke være med i DAO'ens interface, da det er en
 	// implementations-detalje, at der netop er tale om en JPA-baseret DAO, 
 	// som skal bruge en EntityManager.
-	@PersistenceContext(unitName = "ServerJpaTestPersistenceUnit")
+	@PersistenceContext(unitName = "primary")
 	public void setEntityManager(EntityManager entityManager) {
 		this.entityManager = entityManager;
 	}
@@ -35,6 +35,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 	}
 	
 	public void removePerson(Person person) {
+		person = entityManager.merge(person);
 		entityManager.remove(person);
 	}
 

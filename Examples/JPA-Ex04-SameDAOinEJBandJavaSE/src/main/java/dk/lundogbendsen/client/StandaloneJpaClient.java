@@ -8,6 +8,7 @@ import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
 import org.apache.log4j.Level;
 
+//See README.txt for how to run
 
 public class StandaloneJpaClient {
 

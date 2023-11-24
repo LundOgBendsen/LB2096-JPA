@@ -7,7 +7,7 @@
 	<persistence-unit-metadata>
 		<persistence-unit-defaults>
 			<entity-listeners>
-				<entity-listener class="lundogbendsen.model.EntityEventLogger" />
+				<entity-listener class="dk.lundogbendsen.model.EntityEventLogger" />
 			</entity-listeners>
 		</persistence-unit-defaults>
 	</persistence-unit-metadata>

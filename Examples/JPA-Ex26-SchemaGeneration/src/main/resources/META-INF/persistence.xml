@@ -18,7 +18,8 @@
 
 			<property name="jakarta.persistence.schema-generation.scripts.action" value="drop"/>
 			<property name="jakarta.persistence.schema-generation.scripts.drop-target" value="L:\schema-generation-drop.ddl"/>
-			
+
+			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect" />
 		</properties>
 	</persistence-unit>

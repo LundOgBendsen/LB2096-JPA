@@ -35,7 +35,7 @@ public class PersonRepositoryImpl implements PersonRepository {
 	}
 	
 	public void removePerson(Person person) {
-		person = entityManager.merge(person);
+		//person = entityManager.merge(person);
 		entityManager.remove(person);
 	}
 

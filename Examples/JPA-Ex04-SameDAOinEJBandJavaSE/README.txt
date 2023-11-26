@@ -13,14 +13,14 @@ How to run:
 
 client.EjbRmiClient:
 1. start wildfly server
-2. Remove StandaloneJpaTestPersistenceUnit from persistence.xml (comment out)
+2. Remove StandaloneJpaTestPersistenceUnit from persistence.xml (comment it out using <!-- ... -->)
 3. mvn install -P mvn-deploy
 4. mvn install -P ejb-client-build
 5. rightclick at pom.xml > Maven > Reload project
 6. Run client.EjbRmiClient as a java app
 
 client.StandaloneJpaClient:
-1. Include StandaloneJpaTestPersistenceUnit in persistence.xml (comment in)
+1. Include StandaloneJpaTestPersistenceUnit in persistence.xml (comment it in)
 2. mvn install
 3. right click at pom.xml > Maven > Reload project
 4. Run client.StandaloneJpaClient as a java app

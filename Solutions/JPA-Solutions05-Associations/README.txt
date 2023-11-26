@@ -1,3 +1,7 @@
-CDI1.0-Ex-HelloWorld
-Demonstrates the use of CDI in web app.
-Built using maven and latest IntelliJ version.
+JPA-Labs05-Associations
+
+Lab project for Lab 05.
+
+How to run:
+1. mvn install (or use the IntelliJ Maven tab (to the right)).
+2. Run as Java application: dk/lundogbendsen/client/StandaloneJpaClient.java

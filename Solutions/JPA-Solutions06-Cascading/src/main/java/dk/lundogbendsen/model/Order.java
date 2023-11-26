@@ -6,12 +6,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import static jakarta.persistence.CascadeType.*;
 
 @SuppressWarnings("serial")
 @Entity()
@@ -26,13 +22,15 @@ public class Order implements Serializable {
 
 	private LocalDate dateShipped;
 
-	@OneToOne(mappedBy = "order")
+	//we want to keep the invoice after the order is removed.
+	@OneToOne(mappedBy = "order", cascade = {MERGE, PERSIST, REFRESH, DETACH })
 	private Invoice invoice;
 
 	// We have chosen a bidirectional mapping because:
 	// 1. It's a requirement that you can retrieve the orderLines from an Order
 	// 2. It results in a default table layout with no link table (i.e. foreign keys in orderLine table)
-	@OneToMany(mappedBy = "order")
+	// 3. We cascade all operations
+	@OneToMany(mappedBy = "order", cascade = {ALL})
 	private Collection<OrderLine> orderLines = new LinkedList<OrderLine>();
 
 	public Order() {

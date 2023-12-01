@@ -1,5 +1,5 @@
 JPA2-Ex-Beanvalidation
 
-How to:
-Run the class
-dk/lundogbendsen/examples/BeanValidationStandaloneClient
+How to run:
+1. mvn install or use the IntelliJ Maven tab (to the right).
+2. Run as Java application: dk/lundogbendsen/client/StandaloneJpaClient.java

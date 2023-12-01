@@ -1,6 +1,6 @@
 JPA-Labs10-RemotingAndDetachment
 
-Lab projectfor lab 10.
+Lab project for lab 10.
 
 
 How to run:

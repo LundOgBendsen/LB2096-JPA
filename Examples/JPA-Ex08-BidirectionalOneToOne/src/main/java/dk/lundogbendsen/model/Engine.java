@@ -11,7 +11,7 @@ public class Engine {
 
 	private int cylinderCount;
 
-	@OneToOne(mappedBy = "engine")
+	@OneToOne
 	private Car car;
 
 	public Engine() {

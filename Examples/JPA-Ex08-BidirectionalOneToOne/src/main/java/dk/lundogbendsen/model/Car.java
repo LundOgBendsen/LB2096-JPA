@@ -12,7 +12,7 @@ public class Car {
 
 	private String make;
 
-	@OneToOne
+	@OneToOne(mappedBy = "car")
 	private Engine engine;
 
 	public Car() {
@@ -49,12 +49,14 @@ public class Car {
 		// If the new Engine newEngine already had a ref to another Car oldCar,
 		// then oldCar will have a reference to newEngine.
 		// The oldCar.engine must be set to null
-		Car oldCar = newEngine.getCar();
-		if (oldCar != null) {
-			oldCar.engine = null;
+		if(newEngine != null) {
+			Car oldCar = newEngine.getCar();
+			if (oldCar != null) {
+				oldCar.engine = null;
+			}
+			newEngine.setCar(this);
 		}
 		this.engine = newEngine;
-		newEngine.setCar(this);
 	}
 
 	@Override

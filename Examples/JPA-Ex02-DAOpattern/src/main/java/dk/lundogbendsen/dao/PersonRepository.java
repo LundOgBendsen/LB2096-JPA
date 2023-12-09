@@ -1,8 +1,8 @@
-package lundogbendsen.dao;
+package dk.lundogbendsen.dao;
 
 import java.util.List;
 
-import lundogbendsen.model.Person;
+import dk.lundogbendsen.model.Person;
 import dk.lundogbendsen.jpa.util.EntityPager;
 
 public interface PersonRepository {
